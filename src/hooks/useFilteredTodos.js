@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 
-const useFilteredTodos = (url) =>{
+const useFilteredTodos = () =>{
 //   const API_URL = "https://jsonplaceholder.typicode.com/todos"
 
-    const [list, setList] = useState()
+    const [list, setList] = useState([])
     const [cerca, setCerca] = useState()
 
     const fetchData = async() =>{
@@ -14,14 +14,15 @@ const useFilteredTodos = (url) =>{
                 throw new Error("error during fetch")
             }
             const data = await respose.json()
-            setList(data.cerca)
+            setList(data)
         } catch (error) {
             console.log(error)
         }
     }
     useEffect(() =>{
         fetchData()
-    },[url])
+        list.filter(item => item.cerca)
+    },[])
 
     return(
         {
