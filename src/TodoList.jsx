@@ -1,14 +1,15 @@
-import { useCallback, useMemo, useState } from "react"
-import { useFetech } from "./hooks/useFetch"
+import { useCallback, useContext, useMemo, useState } from "react"
+// import { useFetech } from "./hooks/useFetch"
 import useFilteredTodos from "./hooks/useFilteredTodos"
+import { TodoContext } from "./provider/TodoProvider"
 
 const TodoList = () => {
 const inputRef = useRef()
     const API_URL = "https://jsonplaceholder.typicode.com/todos"
     const filter = useFilteredTodos(data,searchTerm)
     const [searchTerm, setSearchTerm] = useState()
-   
-    const { data, loading, error } = useFetech(API_URL)
+    // const { data, loading, error } = useFetech(API_URL)
+    const [lang, loading ,error] = useContext(TodoContext)
     if (loading) {
 
         <p>caricamento...</p>
