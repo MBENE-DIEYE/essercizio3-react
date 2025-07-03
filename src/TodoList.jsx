@@ -17,13 +17,14 @@ const inputRef = useRef()
         <p>{error}</p>
     }
 
-    const handhalInput = useCallback(() =>{
-    
-    },[list])
-    const handhalmemo = useMemo(() =>{
-      return   list = list.cerca
-    },[list])
+   const  handleInputChange = useCallback((e) =>{
+    setSearchTerm(e.target.value)
+   },[])
 
+   const filtred = useMemo(() => {
+       return data.filter((item) =>item == search)
+   
+   },[data,searchTerm])
     useEffect(()=>{
         inputRef.current.focus()
     },[])
@@ -54,7 +55,10 @@ const inputRef = useRef()
 
             <form >
                 <label htmlFor="recerca">recerca</label>
-                <input type="text" id="recerca" name="recerca"onChange={handhalInput}  ref={inputRef}/>
+                {/* <input type="text" id="recerca" name="recerca" value={searchTerm}  onChange={(e) =>setSearchTerm(e.target.value)} ref={inputRef}/> */}
+
+                {/* con useCallback */}
+                <input type="text" id="recerca" name="recerca" value={searchTerm}  onChange={handleInputChange} ref={inputRef}/>
                  
             </form>
 
