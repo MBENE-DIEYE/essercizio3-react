@@ -1,14 +1,13 @@
-import { useCallback, useMemo } from "react"
+import { useCallback, useMemo, useState } from "react"
 import { useFetech } from "./hooks/useFetch"
 import useFilteredTodos from "./hooks/useFilteredTodos"
 
 const TodoList = () => {
 const inputRef = useRef()
     const API_URL = "https://jsonplaceholder.typicode.com/todos"
-    const { list, cerca } = useFilteredTodos(API_URL)
-    if (cerca) {
-        <p>Search...</p>
-    }
+    const filter = useFilteredTodos(data,searchTerm)
+    const [searchTerm, setSearchTerm] = useState()
+   
     const { data, loading, error } = useFetech(API_URL)
     if (loading) {
 
@@ -19,7 +18,7 @@ const inputRef = useRef()
     }
 
     const handhalInput = useCallback(() =>{
-      return   list = list.cerca
+    
     },[list])
     const handhalmemo = useMemo(() =>{
       return   list = list.cerca
