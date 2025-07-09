@@ -4,12 +4,12 @@ import useFilteredTodos from "./hooks/useFilteredTodos"
 import { TodoContext } from "./provider/TodoProvider"
 
 const TodoList = () => {
-const inputRef = useRef()
+// const inputRef = useRef()
     const API_URL = "https://jsonplaceholder.typicode.com/todos"
     const filter = useFilteredTodos(data,searchTerm)
     const [searchTerm, setSearchTerm] = useState()
     // const { data, loading, error } = useFetech(API_URL)
-    const [lang, loading ,error] = useContext(TodoContext)
+    const [data, loading ,error] = useContext(TodoContext)
     if (loading) {
 
         <p>caricamento...</p>
@@ -56,7 +56,7 @@ const inputRef = useRef()
 
             <form >
                 <label htmlFor="recerca">recerca</label>
-                {/* <input type="text" id="recerca" name="recerca" value={searchTerm}  onChange={(e) =>setSearchTerm(e.target.value)} ref={inputRef}/> */}
+                 <input type="text" id="recerca" name="recerca" value={searchTerm}  onChange={(e) =>setSearchTerm(e.target.value)} ref={inputRef}/> 
 
                 {/* con useCallback */}
                 <input type="text" id="recerca" name="recerca" value={searchTerm}  onChange={handleInputChange} ref={inputRef}/>
